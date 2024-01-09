@@ -10,13 +10,30 @@ using namespace std;
     2. Prime  factorisation
 
 */
-int euclid_GCD(int a, int b)
+
+//         Time Complexity: O(log(min(a,b)))
+//         Space Complexity: O(log(min(a,b)))
+int euclid_GCD_rec(int a, int b)
 {
     if (b == 0)
         return a;
     else
         return euclid_GCD(b, a % b);
 }
+
+//         Time Complexity: O(log(min(a,b)))
+//         Space Complexity: O(1)
+int euclid_GCD_itr(int a, int b)
+{
+    while (b != 0)
+    {
+        int temp = a;
+        a = b;
+        b = temp % b;
+    }
+    return a;
+}
+
 void prime_factors(int num, vector<int> &v)
 {
     for (int i = 2; i * i <= num; i++)
@@ -32,6 +49,8 @@ void prime_factors(int num, vector<int> &v)
         v.push_back(num);
 }
 
+//        Time Complexity: O(sqrt(n)log(n))
+//        Space Complexity: O(sqrt(n))
 int prime_factors_GCD(int a, int b)
 {
     vector<int> v1;
@@ -62,6 +81,6 @@ int main()
 {
     int a, b;
     cin >> a >> b;
-    // cout << euclid_GCD(a, b);
+    // cout << euclid_GCD_rec(a, b);
     cout << prime_factors_GCD(a, b);
 }
