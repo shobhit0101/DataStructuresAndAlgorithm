@@ -36,17 +36,17 @@ int euclid_GCD_itr(int a, int b)
 
 void prime_factors(int num, vector<int> &v)
 {
-    for (int i = 2; i * i <= num; i++)
+    int c = 2;
+    while (num > 1)
     {
-        if (num % i == 0)
+        if (num % c == 0)
         {
-            v.push_back(i);
-            num = num / i;
+            v.push_back(c);
+            num /= c;
         }
+        else
+            c++;
     }
-
-    if (num > 1)
-        v.push_back(num);
 }
 
 //        Time Complexity: O(sqrt(n)log(n))
